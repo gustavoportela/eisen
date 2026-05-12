@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Estratégica — Eisen Distribuição 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0D1117;
+  --ink-mid: #3A3F4A;
+  --ink-soft: #7A808F;
+  --ink-faint: #B0B5BF;
+  --line: #E6E8ED;
+  --line-soft: #F0F2F5;
+  --bg: #F8F9FB;
+  --white: #ffffff;
+  --blue: #1444C0;
+  --blue-mid: #1A56DB;
+  --blue-light: #EDF1FC;
+  --blue-pale: #F5F7FE;
+  --gold: #B8820A;
+  --gold-light: #FDF5E4;
+  --green: #0A6B3F;
+  --green-light: #EAF5F0;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+}
+
+/* UTILS */
+.serif { font-family: 'Fraunces', serif; }
+.label {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.label-blue {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+}
+
+/* SECTIONS */
+section { padding: 72px 24px; }
+.container { max-width: 760px; margin: 0 auto; }
+.container-wide { max-width: 900px; margin: 0 auto; }
+
+/* ====== HERO ====== */
+.hero {
+  background: var(--ink);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 24px 72px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-bg-shape {
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,86,219,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 5px 14px 5px 10px;
+  margin-bottom: 32px;
+}
+
+.hero-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4A90E8;
+}
+
+.hero-tag span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(34px, 5.5vw, 52px);
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: #7AAEF0;
+}
+
+.hero-lead {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 48px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hero-meta-item .meta-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.hero-meta-item .meta-value {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* ====== ABERTURA ====== */
+.abertura {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.abertura-text {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin-top: 20px;
+}
+
+.abertura-text p + p { margin-top: 18px; }
+
+.abertura-text strong { color: var(--ink); font-weight: 500; }
+
+/* ====== DIAGNOSTICO ====== */
+.diagnostico { background: var(--bg); }
+
+.section-header { margin-bottom: 40px; }
+.section-header .label { margin-bottom: 10px; display: block; }
+.section-header h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.section-header p {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+.diag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 580px) { .diag-grid { grid-template-columns: 1fr; } }
+
+.diag-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+
+.diag-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+
+.diag-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--blue-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.diag-icon svg { width: 18px; height: 18px; stroke: var(--blue-mid); }
+
+.diag-card h3 {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.diag-card p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ====== ESCOPO ====== */
+.escopo {
+  background: var(--white);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.escopo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.escopo-item {
+  background: var(--white);
+  padding: 22px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background 0.15s;
+}
+
+.escopo-item:last-child { border-bottom: none; }
+.escopo-item:hover { background: var(--bg); }
+
+.escopo-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--ink-faint);
+  min-width: 28px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.escopo-content h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.escopo-content p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.escopo-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.tag-new { background: var(--blue-light); color: var(--blue-mid); }
+.tag-update { background: var(--gold-light); color: var(--gold); }
+.tag-integration { background: var(--green-light); color: var(--green); }
+
+/* ====== BENEFICIOS ====== */
+.beneficios { background: var(--blue); }
+
+.beneficios .section-header h2 { color: #fff; }
+.beneficios .section-header .label-blue { color: rgba(255,255,255,0.5); }
+.beneficios .section-header p { color: rgba(255,255,255,0.55); }
+
+.ben-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (max-width: 640px) { .ben-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) and (min-width: 641px) { .ben-grid { grid-template-columns: 1fr 1fr; } }
+
+.ben-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+}
+
+.ben-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.ben-card p {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+.ben-number {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+/* ====== CRONOGRAMA ====== */
+.cronograma {
+  background: var(--bg);
+}
+
+.timeline {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 1px solid var(--line);
+  margin-left: 16px;
+  padding-left: 32px;
+}
+
+.tl-item { padding-bottom: 36px; position: relative; }
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot {
+  position: absolute;
+  left: -40px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue-mid);
+  border: 2px solid var(--bg);
+  outline: 1px solid var(--blue-mid);
+}
+
+.tl-week {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 6px;
+}
+
+.tl-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.tl-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+/* ====== INVESTIMENTO ====== */
+.investimento {
+  background: var(--white);
+  border-top: 1px solid var(--line);
+}
+
+.inv-plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (max-width: 560px) { .inv-plans { grid-template-columns: 1fr; } }
+
+.inv-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.inv-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.07); }
+
+.inv-card.featured {
+  border: 2px solid var(--blue-mid);
+}
+
+.inv-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue-mid);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.inv-name {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.inv-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.inv-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.inv-curr {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.inv-price {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.inv-prazo {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.inv-divider { border: none; border-top: 1px solid var(--line); margin-bottom: 18px; }
+
+.inv-items { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px; }
+
+.inv-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+.inv-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.inv-check svg { width: 8px; height: 8px; stroke: var(--green); }
+
+.cta-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 13px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.cta-primary { background: var(--blue-mid); color: #fff; }
+.cta-primary:hover { background: var(--blue); }
+.cta-secondary { background: transparent; color: var(--blue-mid); border: 1.5px solid var(--line); }
+.cta-secondary:hover { border-color: var(--blue-mid); background: var(--blue-pale); }
+
+.payment-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ====== ENCERRAMENTO ====== */
+.encerramento {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.enc-box {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  text-align: center;
+}
+
+.enc-box h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.enc-box h2 em { font-style: italic; color: var(--blue-mid); }
+
+.enc-box p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+
+.enc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.18s;
+  margin-bottom: 24px;
+}
+
+.enc-cta:hover { background: #1a2030; }
+
+.enc-cta svg { width: 17px; height: 17px; fill: currentColor; }
+
+.enc-validity {
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ====== FOOTER ====== */
+.foot {
+  background: var(--ink);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.foot p { font-size: 12px; color: rgba(255,255,255,0.25); }
+.foot strong { color: rgba(255,255,255,0.45); font-weight: 400; }
+
+/* ====== ANIMATIONS ====== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.7s ease both; }
+.fade-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.2s ease both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-inner">
+    <div class="hero-tag fade-up">
+      <span class="hero-tag-dot"></span>
+      <span>Proposta estratégica &middot; Maio 2026</span>
+    </div>
+    <h1 class="fade-up-1">
+      O site que acompanha<br>a <em>evolução da Eisen</em>
+    </h1>
+    <p class="hero-lead fade-up-2">
+      Uma proposta pensada para transformar o site de vocês em uma ferramenta comercial ativa, preparada para campanhas, para os 15 anos da empresa e para os próximos anos de crescimento.
+    </p>
+    <div class="hero-meta fade-up-3">
+      <div class="hero-meta-item">
+        <span class="meta-label">Para</span>
+        <span class="meta-value">Eisen Distribuição Especializada</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Elaborado por</span>
+        <span class="meta-value">Luiz Gustavo Portela</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Data</span>
+        <span class="meta-value">12 de maio de 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABERTURA -->
+<section class="abertura">
+  <div class="container">
+    <span class="label">Uma palavra antes</span>
+    <div class="abertura-text">
+      <p>Eliana, que bom receber essa mensagem de vocês.</p>
+      <p>Quando a Eisen me procurou pela primeira vez, me foi entregue um PSD e uma confiança que eu levei a sério. O resultado foi um site que funcionou bem para o momento da empresa. Mas o tempo passa, a empresa cresce e o que era suficiente antes pode estar limitando o que vocês conseguem fazer hoje.</p>
+      <p>O fato de vocês voltarem, agora com uma visão mais clara de como querem usar o site comercialmente, me diz muito. Vocês estão no momento certo para dar esse próximo passo. E eu quero muito fazer parte disso.</p>
+      <p>Essa proposta não é sobre "ajustes". É sobre fazer o site trabalhar de verdade pela Eisen. Especialmente num ano tão especial como esse, com a empresa completando <strong>15 anos</strong> de história.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="diagnostico">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Diagnóstico</span>
+      <h2>O que o site atual entrega<br>e onde ele pode ir mais longe</h2>
+      <p>Analisei o site com atenção antes de escrever essa proposta. O que existe funciona, mas há oportunidades claras de evoluir tanto a experiência quanto o resultado comercial.</p>
+    </div>
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3>Performance e velocidade</h3>
+        <p>O WordPress com Elementor carrega muitos recursos desnecessários. Isso afeta o tempo de abertura, especialmente no celular, o que impacta diretamente o desempenho das campanhas de tráfego pago.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Ausência de foco comercial</h3>
+        <p>O site hoje é institucional, mas não converte ativamente. Falta um caminho claro para quem chega via anúncio: um CTA direto, uma página pensada para converter, um acesso fácil ao WhatsApp comercial.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Seção de vagas desatualizada</h3>
+        <p>A área "Trabalhe Conosco" existe, mas as vagas são estáticas e dependem de atualização manual. Com a integração ao Sólides, isso passa a funcionar automaticamente, em tempo real.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+        </div>
+        <h3>Hierarquia visual e escaneabilidade</h3>
+        <p>O conteúdo existe e é bom, mas está organizado de forma que o visitante precisa ler tudo para entender o valor da Eisen. Uma boa hierarquia faz o site comunicar em segundos, não em minutos.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h3>Experiência mobile</h3>
+        <p>O site é responsivo, mas a experiência em celular pode ser mais fluida e mais rápida. Com a maioria do tráfego vindo de mobile, especialmente via anúncios, isso faz diferença real nos resultados.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Nenhum destaque para os 15 anos</h3>
+        <p>Quinze anos de história é um ativo de marca enorme. Uma empresa que chegou até aqui transmite segurança para clientes e parceiros. Isso precisa estar no site de forma visível e com orgulho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCOPO -->
+<section class="escopo">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">O que será feito</span>
+      <h2>Estrutura completa do projeto</h2>
+      <p>Cada entrega foi pensada para resolver um problema concreto ou abrir uma oportunidade real para o negócio.</p>
+    </div>
+    <div class="escopo-list">
+
+      <div class="escopo-item">
+        <div class="escopo-num">01</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-update">Renovação</span>
+          <h3>Banner principal renovado</h3>
+          <p>O primeiro impacto do site vai ganhar uma comunicação mais direta, mais comercial e visualmente mais forte. A proposta é que o visitante entenda em 3 segundos quem é a Eisen e o que ela oferece.</p>
+        </div>
+      </div>
+
+      <div class="escopo-item">
+        <div class="escopo-num">02</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-new">Novo</span>
+          <h3>Landing pages comerciais para campanhas</h3>
+          <p>Uma ou duas páginas focadas em conversão, pensadas para receber tráfego pago. Estrutura limpa, copy direta, CTA para WhatsApp. Sem distração, sem saída. Só o caminho para o cliente entrar em contato.</p>
+        </div>
+      </div>
+
+      <div class="escopo-item">
+        <div class="escopo-num">03</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-new">Novo</span>
+          <h3>Seção comemorativa dos 15 anos</h3>
+          <p>Um momento especial merece destaque especial. A home vai ganhar um bloco que valoriza essa história de forma elegante, com a data, a trajetória e o que isso representa para clientes e parceiros.</p>
+        </div>
+      </div>
+
+      <div class="escopo-item">
+        <div class="escopo-num">04</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-update">Atualização</span>
+          <h3>Carrossel de marcas parceiras atualizado</h3>
+          <p>As marcas que entraram e as que saíram do portfólio serão atualizadas. O carrossel vai ganhar uma apresentação mais limpa e visualmente organizada, valorizando o peso das marcas que vocês distribuem.</p>
+        </div>
+      </div>
+
+      <div class="escopo-item">
+        <div class="escopo-num">05</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-integration">Integração</span>
+          <h3>Trabalhe Conosco integrado ao Sólides</h3>
+          <p>As vagas passam a aparecer automaticamente, puxadas em tempo real direto da plataforma de vocês. Nenhuma vaga desatualizada, nenhuma atualização manual necessária.</p>
+        </div>
+      </div>
+
+      <div class="escopo-item">
+        <div class="escopo-num">06</div>
+        <div class="escopo-content">
+          <span class="escopo-tag tag-update">Melhoria</span>
+          <h3>Performance, velocidade e base técnica</h3>
+          <p>O projeto será desenvolvido numa estrutura de código muito mais eficiente que o WordPress com Elementor. Isso resulta em um site mais rápido, mais estável, com melhor pontuação nos mecanismos de busca e, diretamente, em campanhas de tráfego mais baratas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="container-wide">
+    <div class="section-header">
+      <span class="label-blue">Por que vale</span>
+      <h2>O que muda na prática para a Eisen</h2>
+      <p>Esses são os ganhos concretos que esse projeto traz para o negócio de vocês.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-card">
+        <div class="ben-number">01</div>
+        <h3>Campanhas mais eficientes</h3>
+        <p>Um site rápido tem índice de qualidade mais alto no Meta e Google Ads. Isso reduz o custo por clique e aumenta o retorno das campanhas.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-number">02</div>
+        <h3>Mais clientes pelo WhatsApp</h3>
+        <p>Com páginas pensadas para converter, o caminho entre o anúncio e o contato comercial fica direto. Menos cliques, mais conversas.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-number">03</div>
+        <h3>Gestão de vagas sem esforço</h3>
+        <p>A equipe de RH não precisa mais pedir para ninguém atualizar o site. As vagas aparecem e somem sozinhas conforme o Sólides.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-number">04</div>
+        <h3>Credibilidade reforçada</h3>
+        <p>Os 15 anos de história da Eisen vão estar visíveis. Isso transmite segurança para novos clientes que chegam pelo site pela primeira vez.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-number">05</div>
+        <h3>Site que funciona no celular de verdade</h3>
+        <p>A maioria dos acessos via anúncio vem de mobile. Uma experiência mobile rápida e fluida é diretamente proporcional a mais contatos gerados.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-number">06</div>
+        <h3>Base estável para o futuro</h3>
+        <p>Com uma estrutura técnica mais sólida, qualquer evolução futura fica mais simples e mais rápida. Vocês saem do modo "ajuste emergencial".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section class="cronograma">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Cronograma</span>
+      <h2>Do briefing ao ar em 4 semanas</h2>
+      <p>Esse é o fluxo estimado para o projeto completo. Para o plano essencial, a entrega acontece em 2 semanas.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Semana 1</div>
+        <div class="tl-title">Briefing, conteúdo e setup</div>
+        <div class="tl-desc">Recebimento do material de vocês, definição dos textos, imagens e configuração do ambiente de desenvolvimento.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Semana 2</div>
+        <div class="tl-title">Home e páginas principais</div>
+        <div class="tl-desc">Desenvolvimento da home com novo banner, seção dos 15 anos, carrossel de marcas atualizado e demais seções institucionais.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Semana 3</div>
+        <div class="tl-title">Landing pages e integração Sólides</div>
+        <div class="tl-desc">Desenvolvimento das páginas comerciais focadas em conversão e configuração da integração automática com as vagas em tempo real.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Semana 4</div>
+        <div class="tl-title">Revisão, testes e publicação</div>
+        <div class="tl-desc">Rodada de ajustes, testes em dispositivos móveis e desktop, e publicação com o domínio atual sem interrupção.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="investimento">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Investimento</span>
+      <h2>Duas opções para começar</h2>
+      <p>O projeto pode ser contratado de forma modular, conforme a prioridade e o momento de vocês.</p>
+    </div>
+    <div class="inv-plans">
+
+      <!-- ESSENCIAL -->
+      <div class="inv-card">
+        <div class="inv-name">Plano Essencial</div>
+        <div class="inv-title">Ajustes e melhorias pontuais</div>
+        <div class="inv-price-row">
+          <span class="inv-curr">R$</span>
+          <span class="inv-price">1.600</span>
+        </div>
+        <div class="inv-prazo">Entrega em 2 semanas</div>
+        <hr class="inv-divider">
+        <ul class="inv-items">
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Novo banner principal</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Atualização do carrossel de marcas</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> 1 landing page comercial com CTA para WhatsApp</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Integração Trabalhe Conosco com Sólides</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Ajustes de texto e informações gerais</li>
+        </ul>
+        <a href="https://wa.me/5561981765590" class="cta-btn cta-secondary">Quero o Essencial</a>
+      </div>
+
+      <!-- COMPLETO -->
+      <div class="inv-card featured">
+        <span class="inv-badge">Recomendado</span>
+        <div class="inv-name">Plano Completo</div>
+        <div class="inv-title">Redesenvolvimento estratégico</div>
+        <div class="inv-price-row">
+          <span class="inv-curr">R$</span>
+          <span class="inv-price">3.800</span>
+        </div>
+        <div class="inv-prazo">Entrega em 3 a 4 semanas</div>
+        <hr class="inv-divider">
+        <ul class="inv-items">
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Tudo do plano essencial</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Reescrita completa do site em código moderno e performático</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> 2 landing pages focadas em conversão para campanhas</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Seção comemorativa dos 15 anos na home</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Meta Pixel e Google Analytics 4 configurados</li>
+          <li><span class="inv-check"><svg viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span> Performance otimizada para reduzir custo nos anúncios</li>
+        </ul>
+        <a href="https://wa.me/5561981765590" class="cta-btn cta-primary">Quero o Completo</a>
+      </div>
+
+    </div>
+    <p class="payment-note">Pagamento em 2 parcelas sem juros: 50% na assinatura, 50% na entrega.<br>Textos e imagens fornecidos pela equipe da Eisen.</p>
+  </div>
+</section>
+
+<!-- ENCERRAMENTO -->
+<section class="encerramento">
+  <div class="container">
+    <div class="enc-box">
+      <h2>Prontos para fazer o site<br>trabalhar pela <em>Eisen</em>?</h2>
+      <p>
+        Quinze anos de construção merecem um site à altura. Fico à disposição para tirar qualquer dúvida, ajustar o que for necessário e começar assim que vocês quiserem.
+      </p>
+      <a href="https://wa.me/5561981765590?text=Oi%20Gustavo%2C%20quero%20falar%20sobre%20a%20proposta!" class="enc-cta">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fechar pelo WhatsApp
+      </a>
+      <br>
+      <span class="enc-validity">Proposta válida por 15 dias &middot; Maio de 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <p>Elaborado por <strong>Luiz Gustavo Portela</strong> &middot; Designer e Desenvolvedor Web &middot; <strong>(61) 98176-5590</strong></p>
+</footer>
+
+</body>
+</html>
