@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing do Projeto — Eisen Distribuição</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0C0F14;
+  --ink-mid: #363B45;
+  --ink-soft: #727885;
+  --ink-faint: #A8ADB8;
+  --border: #E2E5EB;
+  --border-soft: #F0F2F5;
+  --bg: #F6F7F9;
+  --white: #fff;
+  --blue: #1240C0;
+  --blue-hover: #0F35A8;
+  --blue-light: #EBF0FC;
+  --blue-pale: #F4F6FD;
+  --focus: #1240C0;
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 40px 16px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 680px; margin: 0 auto; }
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-radius: 20px;
+  padding: 5px 14px;
+  margin-bottom: 22px;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.header-badge span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.header h1 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 5vw, 42px);
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.header h1 em { font-style: italic; color: var(--blue); }
+
+.header p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* PROGRESS */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.prog-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.prog-step.inactive { opacity: 0.35; }
+
+.prog-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: all 0.25s;
+  position: relative;
+  z-index: 1;
+}
+
+.prog-step.active .prog-dot {
+  background: var(--blue);
+  color: #fff;
+}
+
+.prog-step.done .prog-dot {
+  background: var(--ink);
+  color: #fff;
+}
+
+.prog-step.done .prog-dot::after {
+  content: '';
+  position: absolute;
+  width: 8px; height: 5px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.prog-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.prog-step.active .prog-label { color: var(--blue); }
+.prog-step.done .prog-label { color: var(--ink); }
+
+.prog-line {
+  width: 48px;
+  height: 1px;
+  background: var(--border);
+  margin: 0 4px;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 480px) { .prog-line { width: 24px; } }
+
+/* CARD */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: fadeUp 0.5s 0.15s ease both;
+}
+
+.card-head {
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.card-head-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.step-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon svg { width: 16px; height: 16px; stroke: var(--blue); }
+
+.card-head h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.card-head p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-left: 46px;
+}
+
+.card-body { padding: 28px 32px 32px; }
+
+@media (max-width: 480px) {
+  .card-head { padding: 22px 20px 18px; }
+  .card-body { padding: 22px 20px 24px; }
+  .card-head p { margin-left: 0; margin-top: 8px; }
+}
+
+/* FORM */
+.step { display: none; }
+.step.active { display: block; }
+
+.field { margin-bottom: 22px; }
+.field:last-of-type { margin-bottom: 0; }
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  margin-bottom: 7px;
+}
+
+.field label span {
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  -webkit-appearance: none;
+  resize: none;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--focus);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(18,64,192,0.08);
+}
+
+.field textarea { min-height: 90px; line-height: 1.6; }
+
+.field input::placeholder,
+.field textarea::placeholder { color: var(--ink-faint); }
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+
+/* RADIOS / CHECKBOXES */
+.options { display: flex; flex-direction: column; gap: 8px; }
+
+.opt-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.opt-item:hover { border-color: #C0CCEE; background: var(--blue-pale); }
+.opt-item.selected { border-color: var(--blue); background: var(--blue-pale); }
+
+.opt-item input { display: none; }
+
+.opt-custom {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.opt-check {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.opt-item.selected .opt-custom,
+.opt-item.selected .opt-check {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
+.opt-custom-inner {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.opt-item.selected .opt-custom-inner { opacity: 1; }
+
+.opt-check-inner {
+  width: 10px; height: 7px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translate(1px, -1px);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.opt-item.selected .opt-check-inner { opacity: 1; }
+
+.opt-label { font-size: 13.5px; color: var(--ink-mid); line-height: 1.5; }
+.opt-sub { font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+
+/* REFERENCE GRID */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 480px) { .ref-grid { grid-template-columns: 1fr 1fr; } }
+
+.ref-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--bg);
+}
+
+.ref-item:hover { border-color: #C0CCEE; }
+.ref-item.selected { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(18,64,192,0.15); }
+
+.ref-thumb {
+  height: 72px;
+  background: var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ref-thumb-inner {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.ref-label {
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+.ref-sub {
+  padding: 0 10px 8px;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+/* UPLOAD AREA */
+.upload-area {
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: var(--bg);
+}
+
+.upload-area:hover { border-color: var(--blue); background: var(--blue-pale); }
+
+.upload-area svg { stroke: var(--ink-faint); width: 28px; height: 28px; margin-bottom: 8px; }
+.upload-area p { font-size: 13px; color: var(--ink-soft); }
+.upload-area span { font-size: 11px; color: var(--ink-faint); margin-top: 3px; display: block; }
+
+.upload-area input { display: none; }
+
+.file-list { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: var(--ink-mid);
+}
+
+.file-item svg { width: 14px; height: 14px; stroke: var(--blue); flex-shrink: 0; }
+
+/* DIVIDER */
+.field-divider {
+  border: none;
+  border-top: 1px solid var(--border-soft);
+  margin: 24px 0;
+}
+
+/* SECTION LABEL */
+.field-section {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+  margin-top: 28px;
+  display: block;
+}
+
+.field-section:first-child { margin-top: 0; }
+
+/* NAV */
+.card-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-top: 1px solid var(--border-soft);
+  gap: 12px;
+}
+
+@media (max-width: 480px) { .card-nav { padding: 16px 20px; } }
+
+.btn {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 11px 22px;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn svg { width: 14px; height: 14px; stroke: currentColor; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover { background: var(--bg); color: var(--ink); }
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-primary:hover { background: var(--blue-hover); }
+
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-dark:hover { background: #1a2030; }
+
+.step-count {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+/* SUMMARY */
+.summary-grid { display: flex; flex-direction: column; gap: 0; }
+
+.sum-row {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-soft);
+  align-items: flex-start;
+}
+
+.sum-row:last-child { border-bottom: none; }
+
+.sum-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  min-width: 130px;
+  padding-top: 1px;
+}
+
+.sum-value {
+  font-size: 13.5px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* SUCCESS */
+.success {
+  display: none;
+  text-align: center;
+  padding: 56px 32px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.success.active { display: block; }
+
+.success-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.success-icon svg { width: 24px; height: 24px; stroke: var(--blue); }
+
+.success h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.success h2 em { font-style: italic; color: var(--blue); }
+
+.success p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  max-width: 400px;
+  margin: 0 auto 28px;
+}
+
+.success-wpp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.18s;
+}
+
+.success-wpp:hover { background: #1a2030; }
+.success-wpp svg { width: 16px; height: 16px; fill: #fff; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.note-box {
+  background: var(--blue-pale);
+  border: 1px solid #D0DAEF;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.note-box strong { font-weight: 500; color: var(--ink); }
+
+.color-preview {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.15s;
+  position: relative;
+}
+
+.color-swatch:hover { transform: scale(1.1); }
+
+.color-swatch.selected::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="header">
+    <div class="header-badge">
+      <span class="badge-dot"></span>
+      <span>Briefing do projeto</span>
+    </div>
+    <h1>Vamos fazer tudo<br>do jeito <em>certo</em></h1>
+    <p>Esse formulário garante que eu entenda cada detalhe do que vocês precisam antes de escrever uma linha de código. Leva em torno de 10 minutos.</p>
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progress">
+    <div class="prog-step active" data-step="1" onclick="goTo(1)">
+      <div class="prog-dot">1</div>
+      <span class="prog-label">Empresa</span>
+    </div>
+    <div class="prog-line"></div>
+    <div class="prog-step inactive" data-step="2" onclick="goTo(2)">
+      <div class="prog-dot">2</div>
+      <span class="prog-label">Conteúdo</span>
+    </div>
+    <div class="prog-line"></div>
+    <div class="prog-step inactive" data-step="3" onclick="goTo(3)">
+      <div class="prog-dot">3</div>
+      <span class="prog-label">Design</span>
+    </div>
+    <div class="prog-line"></div>
+    <div class="prog-step inactive" data-step="4" onclick="goTo(4)">
+      <div class="prog-dot">4</div>
+      <span class="prog-label">Comercial</span>
+    </div>
+    <div class="prog-line"></div>
+    <div class="prog-step inactive" data-step="5" onclick="goTo(5)">
+      <div class="prog-dot">5</div>
+      <span class="prog-label">Revisão</span>
+    </div>
+  </div>
+
+  <div class="card" id="mainCard">
+
+    <!-- STEP 1: EMPRESA -->
+    <div class="step active" id="step-1">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h2>Sobre a empresa</h2>
+        </div>
+        <p>Vou usar essas informações para garantir que os textos e a estrutura do site reflitam exatamente como vocês querem ser vistos.</p>
+      </div>
+      <div class="card-body">
+
+        <span class="field-section">Identificação</span>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Nome completo da empresa</label>
+            <input type="text" id="empresa_nome" placeholder="Eisen Distribuição Especializada" value="Eisen Distribuição Especializada">
+          </div>
+          <div class="field">
+            <label>Nome que aparece na comunicação</label>
+            <input type="text" id="empresa_marca" placeholder="Eisen" value="Eisen">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Responsável pelo projeto <span>(nome e cargo)</span></label>
+          <input type="text" id="responsavel" placeholder="Ex: Eliana, Marketing">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>E-mail de contato</label>
+            <input type="email" id="email" placeholder="contato@eisendistribuicao.com.br">
+          </div>
+          <div class="field">
+            <label>WhatsApp para contato</label>
+            <input type="tel" id="whatsapp" placeholder="(51) 9xxxx-xxxx">
+          </div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Posicionamento</span>
+
+        <div class="field">
+          <label>Como vocês descrevem a Eisen em poucas palavras? <span>(como aparecerá no site)</span></label>
+          <textarea id="descricao" placeholder="Ex: Distribuidora especializada em cosméticos, doces e bem-estar, atuando há 15 anos no Sul do Brasil..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Quais são os 3 principais diferenciais da Eisen?</label>
+          <textarea id="diferenciais" placeholder="Ex: Atendimento próximo, centros de distribuição próprios, portfólio de marcas reconhecidas..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Para quem é o site? Quem são os visitantes esperados?</label>
+          <div class="options" id="publico">
+            <label class="opt-item selected" onclick="toggleCheck(this)">
+              <input type="checkbox" checked>
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Lojistas e varejistas que podem virar clientes</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Marcas e fornecedores buscando distribuição</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Candidatos a vagas de emprego</span>
+            </label>
+            <label class="opt-item selected" onclick="toggleCheck(this)">
+              <input type="checkbox" checked>
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Tráfego de campanhas pagas (Meta / Google Ads)</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-nav">
+        <span class="step-count">Etapa 1 de 5</span>
+        <button class="btn btn-primary" onclick="next()">
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: CONTEÚDO -->
+    <div class="step" id="step-2">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h2>Conteúdo do site</h2>
+        </div>
+        <p>Quanto mais material vocês puderem fornecer, melhor fica o resultado final. Isso evita textos genéricos e deixa o site com a voz da Eisen.</p>
+      </div>
+      <div class="card-body">
+
+        <span class="field-section">Textos e materiais</span>
+
+        <div class="field">
+          <label>Vocês têm textos prontos para o site? <span>(pode ser rascunho)</span></label>
+          <div class="options" id="textos_status">
+            <label class="opt-item" onclick="toggleRadio(this, 'textos_status')">
+              <input type="radio" name="textos">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Sim, temos os textos prontos e aprovados</span>
+              </div>
+            </label>
+            <label class="opt-item selected" onclick="toggleRadio(this, 'textos_status')">
+              <input type="radio" name="textos" checked>
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Temos rascunhos que precisam de ajuste</span>
+              </div>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'textos_status')">
+              <input type="radio" name="textos">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Ainda não temos, precisamos criar do zero</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Vocês têm imagens e fotos da empresa? <span>(equipe, galpão, operação, produtos)</span></label>
+          <div class="options" id="fotos_status">
+            <label class="opt-item selected" onclick="toggleRadio(this, 'fotos_status')">
+              <input type="radio" name="fotos" checked>
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Sim, temos um banco de imagens disponível</span>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'fotos_status')">
+              <input type="radio" name="fotos">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Temos algumas, mas não são suficientes</span>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'fotos_status')">
+              <input type="radio" name="fotos">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Não temos, usaremos imagens de banco</span>
+            </label>
+          </div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Marcas parceiras</span>
+
+        <div class="field">
+          <label>Quais marcas precisam entrar ou sair do carrossel?</label>
+          <textarea id="marcas_mudancas" placeholder="Marcas que entram: ...&#10;Marcas que saem: ...&#10;Atualização de logotipos: ..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Envie aqui os logotipos novos <span>(se houver)</span></label>
+          <div class="upload-area" onclick="document.getElementById('upload_logos').click()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Clique para enviar arquivos</p>
+            <span>PNG, SVG, PDF, AI — até 20MB</span>
+            <input type="file" id="upload_logos" multiple accept=".png,.svg,.pdf,.ai,.eps" onchange="showFiles(this, 'files_logos')">
+          </div>
+          <div class="file-list" id="files_logos"></div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Seção 15 anos</span>
+
+        <div class="field">
+          <label>Quais marcos, conquistas ou momentos vocês querem destacar nos 15 anos?</label>
+          <textarea id="quinze_anos" placeholder="Ex: ano de fundação, primeiro centro de distribuição, entrada de marcas importantes, expansão para outros estados, número de clientes ativos hoje..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Algum número que vocês queiram mostrar? <span>(clientes, cidades, marcas, colaboradores)</span></label>
+          <input type="text" id="numeros" placeholder="Ex: +500 clientes ativos, 3 estados, 20 marcas, 80 colaboradores">
+        </div>
+
+      </div>
+      <div class="card-nav">
+        <button class="btn btn-ghost" onclick="prev()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Voltar
+        </button>
+        <span class="step-count">Etapa 2 de 5</span>
+        <button class="btn btn-primary" onclick="next()">
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: DESIGN -->
+    <div class="step" id="step-3">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.5"/><circle cx="17.5" cy="10.5" r="0.5"/><circle cx="8.5" cy="7.5" r="0.5"/><circle cx="6.5" cy="12.5" r="0.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </div>
+          <h2>Identidade visual e design</h2>
+        </div>
+        <p>Vamos manter a identidade atual da Eisen, mas quero entender o que vocês querem preservar, o que pode evoluir e qual sensação o site precisa transmitir.</p>
+      </div>
+      <div class="card-body">
+
+        <div class="note-box">
+          <strong>Sobre o redesign:</strong> o site novo vai manter a identidade visual da Eisen (cores, logo, tipografia). Mas existem ajustes que podem deixar tudo mais moderno sem perder a essência. As perguntas abaixo me ajudam a calibrar até onde ir.
+        </div>
+
+        <span class="field-section">Identidade atual</span>
+
+        <div class="field">
+          <label>O que vocês mais gostam no visual atual do site?</label>
+          <textarea id="gosta_visual" placeholder="Ex: as cores, o logo, a organização das seções, a sensação geral..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>O que vocês mudariam sem pensar duas vezes?</label>
+          <textarea id="mudaria_visual" placeholder="Ex: o banner, a fonte, a densidade de informação, o rodapé..."></textarea>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Sensação do novo site</span>
+
+        <div class="field">
+          <label>Que sensação o site precisa transmitir para quem acessa? <span>(pode marcar mais de um)</span></label>
+          <div class="options" id="sensacao">
+            <label class="opt-item selected" onclick="toggleCheck(this)">
+              <input type="checkbox" checked>
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Confiança e credibilidade</span>
+            </label>
+            <label class="opt-item selected" onclick="toggleCheck(this)">
+              <input type="checkbox" checked>
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Profissionalismo e seriedade</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Modernidade e inovação</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Proximidade e calor humano</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Solidez e tamanho da empresa</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Qual o nível de renovação visual que vocês esperam?</label>
+          <div class="options" id="nivel_renovacao">
+            <label class="opt-item" onclick="toggleRadio(this, 'nivel_renovacao')">
+              <input type="radio" name="renovacao">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Mínimo — só atualizar o que está desatualizado</span>
+                <p class="opt-sub">Manter praticamente tudo como está</p>
+              </div>
+            </label>
+            <label class="opt-item selected" onclick="toggleRadio(this, 'nivel_renovacao')">
+              <input type="radio" name="renovacao" checked>
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Moderado — evoluir o design mantendo a essência</span>
+                <p class="opt-sub">Mesmo DNA visual, apresentação mais moderna</p>
+              </div>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'nivel_renovacao')">
+              <input type="radio" name="renovacao">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Aberto a sugestões — confio no julgamento de vocês</span>
+                <p class="opt-sub">Pode propor o que achar melhor para a marca</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Referências visuais</span>
+
+        <div class="field">
+          <label>Algum site ou marca que vocês admiram o visual? <span>(não precisa ser do mesmo segmento)</span></label>
+          <textarea id="referencias" placeholder="Ex: links de sites, nomes de marcas, prints... qualquer referência que comunique a estética que vocês gostam."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Como vocês descrevem a estética ideal do site?</label>
+          <div class="ref-grid" id="estetica">
+            <div class="ref-item selected" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">🏢</span></div>
+              <div class="ref-label">Limpo e corporativo</div>
+              <div class="ref-sub">Espaçado, organizado, sóbrio</div>
+            </div>
+            <div class="ref-item" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">✨</span></div>
+              <div class="ref-label">Moderno e sofisticado</div>
+              <div class="ref-sub">Tipografia forte, detalhes refinados</div>
+            </div>
+            <div class="ref-item" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">🛒</span></div>
+              <div class="ref-label">Comercial e direto</div>
+              <div class="ref-sub">Focado em ação, CTAs claros</div>
+            </div>
+            <div class="ref-item" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">💡</span></div>
+              <div class="ref-label">Dinâmico e atual</div>
+              <div class="ref-sub">Animações, cores vibrantes</div>
+            </div>
+            <div class="ref-item" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">🤝</span></div>
+              <div class="ref-label">Acolhedor e humano</div>
+              <div class="ref-sub">Fotos reais, texto próximo</div>
+            </div>
+            <div class="ref-item" onclick="toggleRef(this)">
+              <div class="ref-thumb"><span class="ref-thumb-inner">🔵</span></div>
+              <div class="ref-label">Fiel ao atual</div>
+              <div class="ref-sub">Pouquíssimas mudanças visuais</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tem alguma cor que não pode aparecer no site? <span>(concorrente, conflito de marca, etc.)</span></label>
+          <input type="text" id="cores_proibidas" placeholder="Ex: vermelho, laranja, qualquer coisa que lembre o concorrente X...">
+        </div>
+
+      </div>
+      <div class="card-nav">
+        <button class="btn btn-ghost" onclick="prev()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Voltar
+        </button>
+        <span class="step-count">Etapa 3 de 5</span>
+        <button class="btn btn-primary" onclick="next()">
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 4: COMERCIAL -->
+    <div class="step" id="step-4">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          </div>
+          <h2>Estratégia comercial</h2>
+        </div>
+        <p>Esse passo define as páginas de conversão e o funil de atendimento. É aqui que o site começa a gerar resultado de verdade para vocês.</p>
+      </div>
+      <div class="card-body">
+
+        <span class="field-section">WhatsApp comercial</span>
+
+        <div class="field">
+          <label>Qual é o número do WhatsApp comercial que deve receber os contatos do site?</label>
+          <input type="tel" id="wpp_comercial" placeholder="(51) 9xxxx-xxxx — esse número vai nos botões de contato">
+        </div>
+
+        <div class="field">
+          <label>Quando alguém clicar no botão do site, qual mensagem pré-preenchida vocês querem enviar?</label>
+          <textarea id="wpp_mensagem" placeholder="Ex: Olá, vim pelo site da Eisen e quero saber mais sobre como me tornar um cliente."></textarea>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Landing pages de campanha</span>
+
+        <div class="field">
+          <label>Para quais produtos ou segmentos serão as landing pages?</label>
+          <textarea id="lp_produtos" placeholder="Ex: uma página focada em cosméticos (Dailus, Felps, Wella) e uma para distribuidores em geral..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Qual é o principal argumento que convence alguém a entrar em contato com a Eisen?</label>
+          <textarea id="argumento" placeholder="Ex: melhor preço, entrega rápida, marcas de desejo, suporte comercial próximo, centros de distribuição no Sul..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>Tem alguma campanha de tráfego ativa ou planejada que essas páginas vão receber?</label>
+          <div class="options" id="campanha_status">
+            <label class="opt-item selected" onclick="toggleRadio(this, 'campanha_status')">
+              <input type="radio" name="campanha" checked>
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Sim, já temos campanhas no ar ou em planejamento</span>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'campanha_status')">
+              <input type="radio" name="campanha">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Ainda não, mas planejamos usar em breve</span>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'campanha_status')">
+              <input type="radio" name="campanha">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <span class="opt-label">Não sei ainda, vai depender do site pronto</span>
+            </label>
+          </div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Sólides — Trabalhe conosco</span>
+
+        <div class="field">
+          <label>Vocês têm a URL da conta do Sólides / subdomínio de vagas?</label>
+          <input type="text" id="solides_url" placeholder="Ex: eisen.vagas.solides.com.br" value="eisen.vagas.solides.com.br">
+        </div>
+
+        <div class="field">
+          <label>Como querem que as vagas apareçam no site?</label>
+          <div class="options" id="vagas_display">
+            <label class="opt-item selected" onclick="toggleRadio(this, 'vagas_display')">
+              <input type="radio" name="vagas" checked>
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Listadas diretamente na página com link para candidatura</span>
+                <p class="opt-sub">O visitante vê as vagas sem sair do site</p>
+              </div>
+            </label>
+            <label class="opt-item" onclick="toggleRadio(this, 'vagas_display')">
+              <input type="radio" name="vagas">
+              <span class="opt-custom"><span class="opt-custom-inner"></span></span>
+              <div>
+                <span class="opt-label">Botão que abre o portal do Sólides em nova aba</span>
+                <p class="opt-sub">Mais simples, envia o candidato direto para a plataforma</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <hr class="field-divider">
+        <span class="field-section">Outras integrações</span>
+
+        <div class="field">
+          <label>Vocês usam algum pixel de rastreamento ativo? <span>(pode marcar mais de um)</span></label>
+          <div class="options" id="pixels">
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Meta Pixel (Facebook / Instagram Ads)</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Google Analytics / Google Ads</span>
+            </label>
+            <label class="opt-item" onclick="toggleCheck(this)">
+              <input type="checkbox">
+              <span class="opt-check"><span class="opt-check-inner"></span></span>
+              <span class="opt-label">Não usamos ainda, mas quero configurar</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Se já usa algum pixel, nos passe o ID <span>(está no gerenciador de anúncios)</span></label>
+          <input type="text" id="pixel_id" placeholder="Ex: Meta Pixel ID: 12345678 / GA4: G-XXXXXXXXXX">
+        </div>
+
+      </div>
+      <div class="card-nav">
+        <button class="btn btn-ghost" onclick="prev()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Voltar
+        </button>
+        <span class="step-count">Etapa 4 de 5</span>
+        <button class="btn btn-primary" onclick="next()">
+          Revisar e enviar
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 5: REVISÃO -->
+    <div class="step" id="step-5">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h2>Revisão final</h2>
+        </div>
+        <p>Dê uma última olhada antes de enviar. Você também pode adicionar qualquer observação que não coube nas etapas anteriores.</p>
+      </div>
+      <div class="card-body">
+
+        <div class="summary-grid" id="summary">
+          <!-- preenchido via JS -->
+        </div>
+
+        <hr class="field-divider">
+
+        <div class="field">
+          <label>Tem algo mais que queira me contar sobre o projeto? <span>(prazo preferido, preocupações, ideias)</span></label>
+          <textarea id="obs_finais" placeholder="Qualquer detalhe que não coube nas perguntas anteriores..." style="min-height:110px"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Qual é a data limite que vocês têm em mente para o site estar no ar?</label>
+          <input type="text" id="prazo_desejado" placeholder="Ex: antes do aniversário de 15 anos em julho, sem prazo definido...">
+        </div>
+
+      </div>
+      <div class="card-nav">
+        <button class="btn btn-ghost" onclick="prev()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Voltar
+        </button>
+        <span class="step-count">Etapa 5 de 5</span>
+        <button class="btn btn-dark" onclick="submit()">
+          Enviar briefing
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success" id="success">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h2>Briefing enviado.<br><em>Obrigada, Eliana!</em></h2>
+      <p>Recebi tudo. Vou analisar com atenção e já entro em contato para alinhar os próximos passos. O projeto vai ficar incrível.</p>
+      <a href="#" id="wpp-send-link" target="_blank" class="success-wpp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Avisar no WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+let current = 1;
+const total = 5;
+
+function goTo(n) {
+  if (n > current) return; // só pode ir para trás direto
+  showStep(n);
+}
+
+function next() {
+  if (current < total) {
+    if (current === total - 1) buildSummary();
+    showStep(current + 1);
+  }
+}
+
+function prev() {
+  if (current > 1) showStep(current - 1);
+}
+
+function showStep(n) {
+  document.querySelector('.step.active').classList.remove('active');
+  document.getElementById('step-' + n).classList.add('active');
+  current = n;
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  document.querySelectorAll('.prog-step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'done', 'inactive');
+    if (s === current) el.classList.add('active');
+    else if (s < current) el.classList.add('done');
+    else el.classList.add('inactive');
+  });
+}
+
+function toggleRadio(el, groupId) {
+  document.querySelectorAll('#' + groupId + ' .opt-item').forEach(i => i.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('selected');
+}
+
+function toggleRef(el) {
+  el.classList.toggle('selected');
+}
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? (el.value.trim() || '—') : '—';
+}
+
+function buildSummary() {
+  const rows = [
+    { label: 'Empresa', value: val('empresa_nome') },
+    { label: 'Responsável', value: val('responsavel') },
+    { label: 'WhatsApp', value: val('whatsapp') },
+    { label: 'Descrição', value: val('descricao') },
+    { label: 'Diferenciais', value: val('diferenciais') },
+    { label: 'Números / marcos', value: val('numeros') },
+    { label: 'Gosta no visual', value: val('gosta_visual') },
+    { label: 'Mudaria no visual', value: val('mudaria_visual') },
+    { label: 'Referências', value: val('referencias') },
+    { label: 'WhatsApp comercial', value: val('wpp_comercial') },
+    { label: 'Mensagem pré-escrita', value: val('wpp_mensagem') },
+    { label: 'Landing pages', value: val('lp_produtos') },
+    { label: 'URL Sólides', value: val('solides_url') },
+    { label: 'Pixel ID', value: val('pixel_id') },
+  ];
+  const el = document.getElementById('summary');
+  el.innerHTML = rows.map(r => `
+    <div class="sum-row">
+      <span class="sum-label">${r.label}</span>
+      <span class="sum-value">${r.value}</span>
+    </div>
+  `).join('');
+}
+
+function getSelectedLabels(groupId) {
+  const items = document.querySelectorAll('#' + groupId + ' .opt-item.selected .opt-label');
+  const labels = Array.from(items).map(el => el.textContent.trim());
+  return labels.length ? labels.join(', ') : '—';
+}
+
+function getSelectedRefs() {
+  const items = document.querySelectorAll('#estetica .ref-item.selected .ref-label');
+  const labels = Array.from(items).map(el => el.textContent.trim());
+  return labels.length ? labels.join(', ') : '—';
+}
+
+function buildWppMessage() {
+  const lines = [
+    '📋 *BRIEFING — EISEN DISTRIBUIÇÃO*',
+    '',
+    '━━━━━━━━━━━━━━━━━',
+    '*1. EMPRESA*',
+    '━━━━━━━━━━━━━━━━━',
+    `• Empresa: ${val('empresa_nome')}`,
+    `• Nome de marca: ${val('empresa_marca')}`,
+    `• Responsável: ${val('responsavel')}`,
+    `• E-mail: ${val('email')}`,
+    `• WhatsApp: ${val('whatsapp')}`,
+    `• Descrição: ${val('descricao')}`,
+    `• Diferenciais: ${val('diferenciais')}`,
+    `• Público-alvo: ${getSelectedLabels('publico')}`,
+    '',
+    '━━━━━━━━━━━━━━━━━',
+    '*2. CONTEÚDO*',
+    '━━━━━━━━━━━━━━━━━',
+    `• Textos: ${getSelectedLabels('textos_status')}`,
+    `• Fotos: ${getSelectedLabels('fotos_status')}`,
+    `• Mudanças no carrossel: ${val('marcas_mudancas')}`,
+    `• Marcos dos 15 anos: ${val('quinze_anos')}`,
+    `• Números para destacar: ${val('numeros')}`,
+    '',
+    '━━━━━━━━━━━━━━━━━',
+    '*3. DESIGN*',
+    '━━━━━━━━━━━━━━━━━',
+    `• O que gosta no visual atual: ${val('gosta_visual')}`,
+    `• O que mudaria: ${val('mudaria_visual')}`,
+    `• Sensação desejada: ${getSelectedLabels('sensacao')}`,
+    `• Nível de renovação: ${getSelectedLabels('nivel_renovacao')}`,
+    `• Estética preferida: ${getSelectedRefs()}`,
+    `• Referências externas: ${val('referencias')}`,
+    `• Cores proibidas: ${val('cores_proibidas')}`,
+    '',
+    '━━━━━━━━━━━━━━━━━',
+    '*4. COMERCIAL*',
+    '━━━━━━━━━━━━━━━━━',
+    `• WhatsApp comercial: ${val('wpp_comercial')}`,
+    `• Mensagem pré-escrita: ${val('wpp_mensagem')}`,
+    `• Landing pages: ${val('lp_produtos')}`,
+    `• Argumento principal: ${val('argumento')}`,
+    `• Status campanhas: ${getSelectedLabels('campanha_status')}`,
+    `• URL Sólides: ${val('solides_url')}`,
+    `• Exibição de vagas: ${getSelectedLabels('vagas_display')}`,
+    `• Pixels ativos: ${getSelectedLabels('pixels')}`,
+    `• ID dos pixels: ${val('pixel_id')}`,
+    '',
+    '━━━━━━━━━━━━━━━━━',
+    '*5. OBSERVAÇÕES FINAIS*',
+    '━━━━━━━━━━━━━━━━━',
+    `• Prazo desejado: ${val('prazo_desejado')}`,
+    `• Observações: ${val('obs_finais')}`,
+  ];
+  return lines.join('\n');
+}
+
+function submit() {
+  const msg = buildWppMessage();
+  const encoded = encodeURIComponent(msg);
+  const wppUrl = 'https://wa.me/5561981765590?text=' + encoded;
+
+  // atualiza o link do botão de sucesso com a mensagem real
+  document.getElementById('wpp-send-link').href = wppUrl;
+
+  document.querySelector('.step.active').classList.remove('active');
+  document.getElementById('success').classList.add('active');
+  document.getElementById('progress').style.opacity = '0.3';
+  document.getElementById('progress').style.pointerEvents = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showFiles(input, listId) {
+  const list = document.getElementById(listId);
+  list.innerHTML = '';
+  Array.from(input.files).forEach(f => {
+    list.innerHTML += `
+      <div class="file-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        ${f.name}
+      </div>`;
+  });
+}
+</script>
+
+</body>
+</html>
